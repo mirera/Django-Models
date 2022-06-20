@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article List</title>
 </head>
+<link rel="stylesheet" href="{% static 'style.css' %}">
 <body>
-    <h1>Article List</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam fugiat voluptatum molestias cupiditate facere voluptatem? Officia, totam quidem? Odio, mollitia neque maiores explicabo expedita consectetur. Magni temporibus dolorum id. Vero?</p>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <h1>
+                    <a href="#">{{ article.title}}</a>
+                </h1>
+                <p>{{article.snippet}}</p>
+                <p>{{article.date_created}}</p>
+                <p>{{ article.date_published}}</p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
